@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffPatchTool", "DiffPatchTool.csproj", "{EEBE9D92-41C7-4FBE-B141-CA2E6A6D5733}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEBE9D92-41C7-4FBE-B141-CA2E6A6D5733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBE9D92-41C7-4FBE-B141-CA2E6A6D5733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBE9D92-41C7-4FBE-B141-CA2E6A6D5733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBE9D92-41C7-4FBE-B141-CA2E6A6D5733}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F66BB8F1-CAE6-4466-8A0B-2DFA64BBE4A0}
+	EndGlobalSection
+EndGlobal
