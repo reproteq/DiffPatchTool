@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Path = System.IO.Path;
+
 
 namespace DiffPatchTool
 { 
@@ -113,15 +113,18 @@ public partial class MainWindow : Window
         {
             OutputBlock.Text = "Run Diff Algo" + "\r\n";
 
-            string filename1 = Path.GetFileName(varfile1);
-            string strfile1 = Path.GetFileNameWithoutExtension(filename1);
-            string file1pat = Path.GetDirectoryName(varfile1);
-            var patchname = file1pat + @"\" + strfile1 + "-patch.txt";   // output file patchname            
+            //string filename1 = Path.GetFileName(varfile1);
+            //string strfile1 = Path.GetFileNameWithoutExtension(filename1);
+            //string file1pat = Path.GetDirectoryName(varfile1);
+           // var patchname = file1pat + @"\" + strfile1 + "-patch.txt";   // output file patchname  
+           
 
-            OutputBlock.Text += "Comparing ... " + saltli;
+            string patchname =   varfile1 + "-patch.txt";   // output file patchname    
 
+            OutputBlock.Text += "Comparing ... " + saltli;              
+            
             //------------- bytes ori
-            byte[] Bytes_Ori;
+                byte[] Bytes_Ori;
             using (StreamReader sr = new StreamReader(varfile1))
             {
                 using (MemoryStream ms = new MemoryStream())
@@ -198,11 +201,15 @@ public partial class MainWindow : Window
         else
         {
             OutputBlock.Text = "Run Patch Algo" + "\r\n";
-            string filename1 = Path.GetFileName(varfile1);
-            string strfile1 = Path.GetFileNameWithoutExtension(filename1);
+           // string filename1 = Path.GetFileName(varfile1);
+           // string strfile1 = Path.GetFileNameWithoutExtension(filename1);
 
-            string file2pat = Path.GetDirectoryName(varfile2);
-            var patchedfilename = file2pat + @"\" + strfile1 + "-patched.bin";   // output file patchnamefile
+          //  string file2pat = Path.GetDirectoryName(varfile2);
+           // var patchedfilename = file2pat + @"\" + strfile1 + "-patched.bin";   // output file patchnamefile
+
+
+
+           string patchedfilename =    varfile1 + "-patched.bin";   // output file patchnamefile   
             OutputBlock.Text += "Patching ... " + saltli;
 
 
