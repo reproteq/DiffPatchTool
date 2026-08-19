@@ -131,39 +131,6 @@ DiffPatchTool automatically checks for a new version on GitHub **at startup** an
 
 ---
 
-## Building
-
-Requires [Rust](https://rustup.rs) installed.
-
-```bash
-cargo run            # build and run (development)
-cargo build --release
-```
-
-The final executable is placed at `target/release/DiffPatchTool.exe`.
-
-On Linux the GUI development libraries are needed the first time:
-
-```bash
-sudo apt install libxcb1-dev libxkbcommon-dev libwayland-dev \
-                 libgtk-3-dev libglib2.0-dev pkg-config
-```
-
-### Application icon
-
-Place an `icon.ico` (multi-resolution: 16, 32, 48, 256) in `assets/icon.ico`. With that:
-
-- The **window icon** is embedded in the binary.
-- The **`.exe` icon** (Explorer and taskbar) is embedded by `build.rs` when building on Windows.
-
----
-
-## Icons and customization
-
-The interface uses [Phosphor](https://phosphoricons.com/) icons (embedded in the binary via `egui-phosphor`), so they look the same on any system. The theme colors, the hex viewer colors and sizes are adjusted in the code (`setup_style`, `hex_row_layout`).
-
----
-
 ## ☕ Support my work
 
 If you find this project useful and would like to support its development, please consider making a donation. Any amount is welcome and greatly appreciated!
