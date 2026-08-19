@@ -187,3 +187,5 @@ Si encuentras útil este proyecto y te gustaría apoyar su desarrollo, considera
 ## Licencia
 
 © Reproteq. Todos los derechos reservados.
+
+[![Descargas Totales](https://img.shields.io/github/downloads/reproteq/DiffPatchTool/total?style=flat-square&color=blue)](https://github.com/reproteq/DiffPatchTool/releases)
