@@ -174,13 +174,13 @@ Si encuentras útil este proyecto y te gustaría apoyar su desarrollo, considera
 
 | Monto        | Enlace de Donación                                                        |
 |--------------|---------------------------------------------------------------------------|
-| 1 €          | [Donar 1 €](https://www.paypal.com/paypalme/reproteq/1)                    |
-| 5 €          | [Donar 5 €](https://www.paypal.com/paypalme/reproteq/5)                    |
-| 10 €         | [Donar 10 €](https://www.paypal.com/paypalme/reproteq/10)                  |
-| 25 €         | [Donar 25 €](https://www.paypal.com/paypalme/reproteq/25)                  |
-| 50 €         | [Donar 50 €](https://www.paypal.com/paypalme/reproteq/50)                  |
-| 100 €        | [Donar 100 €](https://www.paypal.com/paypalme/reproteq/100)               |
-| Monto Libre  | [Donar Otro Monto](https://www.paypal.com/paypalme/reproteq)              |
+| 1 €          | [Donar 1 €](https://paypal.me/reproteqofficial/1)                    |
+| 5 €          | [Donar 5 €](https://paypal.me/reproteqofficial/5)                    |
+| 10 €         | [Donar 10 €](https://paypal.me/reproteqofficial/10)                  |
+| 25 €         | [Donar 25 €](https://paypal.me/reproteqofficial/25)                  |
+| 50 €         | [Donar 50 €](https://paypal.me/reproteqofficial/50)                  |
+| 100 €        | [Donar 100 €](https://paypal.me/reproteqofficial/100)               |
+| Monto Libre  | [Donar Otro Monto](https://paypal.me/reproteqofficial)              |
 
 ---
 
