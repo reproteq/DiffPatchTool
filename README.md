@@ -1,168 +1,172 @@
 # DiffPatchTool
 
-**DiffPatchTool** es una herramienta de escritorio para **comparar, generar diferencias (diff), aplicar parches (patch), inspeccionar y editar ficheros binarios** — pensada especialmente para el trabajo con firmware de ECU (`.bin`), pero válida para cualquier par de ficheros binarios.
+**DiffPatchTool** is a desktop tool to **compare, generate diffs, apply patches, inspect and edit binary files** — designed especially for working with ECU firmware (`.bin`), but valid for any pair of binary files.
 
-Escrita en **Rust** con [egui/eframe](https://github.com/emilk/egui), compila a un **único `.exe` portable** sin dependencias externas: tema claro moderno, iconos embebidos, visor hexadecimal a color y auto-actualización desde GitHub.
+Written in **Rust** with [egui/eframe](https://github.com/emilk/egui), it compiles to a **single portable `.exe`** with no external dependencies: modern light theme, embedded icons, color hex viewer and auto-update from GitHub.
 
-by **Reproteq** · Autor: **Alex G.T.**
+by **Reproteq** · Author: **Alex G.T.**
 
 ![DiffPatchTool](1.png)
 
----
+## 🎥 Demo video
 
-## Índice
-
-- [Características](#características)
-- [Formato de diff](#formato-de-diff-3-columnas)
-- [Uso](#uso)
-  - [Cargar ficheros](#1-cargar-ficheros-a-y-b)
-  - [Guardar diff (patch)](#2-guardar-diff-a-b)
-  - [Aplicar patch](#3-aplicar-patch)
-  - [Comparador hexadecimal](#4-comparador-hexadecimal-hexcomp)
-  - [Editar bytes](#5-editar-bytes)
-  - [Buscar y navegar](#6-buscar-y-navegar)
-- [Actualizaciones](#actualizaciones)
-- [Compilación](#compilación)
-- [Iconos y personalización](#iconos-y-personalización)
-- [Apoya mi trabajo](#-apoya-mi-trabajo)
+[![Watch the video on YouTube](https://img.youtube.com/vi/3J5tLWyz9hs/maxresdefault.jpg)](https://youtu.be/3J5tLWyz9hs)
 
 ---
 
-## Características
+## Table of contents
 
-- **Comparación byte a byte** de dos ficheros con la lista de diferencias.
-- **Diff en formato de 3 columnas** (`dirección`, `valor viejo`, `valor nuevo`), **retrocompatible** con parches antiguos de 2 columnas.
-- **Aplicación de parches** con verificación opcional del valor original y aviso si el fichero base no coincide.
-- **Comparador hexadecimal** tipo editor: dos paneles A | B lado a lado, bytes cambiados en rojo, offsets en azul.
-- **Edición de bytes** en A y en B directamente sobre el hex, y guardado como `.bin` nuevo.
-- **Buscador** por hex o ASCII, con resaltado en verde.
-- **Navegación** entre diferencias y salto a un offset (`Goto`).
-- **Barra de progreso** para operaciones sobre ficheros grandes (trabajo en segundo plano, la interfaz no se congela).
-- **Timestamps** en el log y en los nombres de los ficheros generados.
-- **Auto-actualización** desde GitHub Releases.
-- **Reportar bugs** por email con un clic.
+- [Features](#features)
+- [Diff format](#diff-format-3-columns)
+- [Usage](#usage)
+  - [Load files](#1-load-files-a-and-b)
+  - [Save diff (patch)](#2-save-diff-a-b)
+  - [Apply patch](#3-apply-patch)
+  - [Hex comparator](#4-hex-comparator-hexcomp)
+  - [Edit bytes](#5-edit-bytes)
+  - [Search and navigate](#6-search-and-navigate)
+- [Updates](#updates)
+- [Building](#building)
+- [Icons and customization](#icons-and-customization)
+- [Support my work](#-support-my-work)
 
 ---
 
-## Formato de diff (3 columnas)
+## Features
 
-Al guardar un diff se escriben tres columnas:
+- **Byte-by-byte comparison** of two files with the list of differences.
+- **Diff in 3-column format** (`address`, `old value`, `new value`), **backward compatible** with legacy 2-column patches.
+- **Patch application** with optional verification of the original value and a warning if the base file doesn't match.
+- **Hex comparator** editor-style: two side-by-side panels A | B, changed bytes in red, offsets in blue.
+- **Byte editing** in both A and B directly on the hex, and saving as a new `.bin`.
+- **Search** by hex or ASCII, with green highlighting.
+- **Navigation** between differences and jump to an offset (`Goto`).
+- **Progress bar** for operations on large files (work runs in the background, the UI never freezes).
+- **Timestamps** in the log and in the names of generated files.
+- **Auto-update** from GitHub Releases.
+- **Report bugs** by email with one click.
+
+---
+
+## Diff format (3 columns)
+
+When saving a diff, three columns are written:
 
 ```
 0xADDR   0xOLD   0xNEW
 ```
 
-| Columna | Significado                                  |
-|---------|----------------------------------------------|
-| `ADDR`  | offset (dirección) del byte que cambia       |
-| `OLD`   | valor viejo (byte del fichero A / original)  |
-| `NEW`   | valor nuevo (byte del fichero B / modificado)|
+| Column  | Meaning                                       |
+|---------|-----------------------------------------------|
+| `ADDR`  | offset (address) of the byte that changes     |
+| `OLD`   | old value (byte from file A / original)       |
+| `NEW`   | new value (byte from file B / modified)       |
 
-Ejemplo:
+Example:
 
 ```
 0x001A20 0x00 0xAB
 0x001A21 0xFF 0xCD
 ```
 
-**Retrocompatibilidad:** un parche antiguo de 2 columnas (`0xADDR 0xNEW`) se sigue aplicando sin problemas. Cada línea se interpreta según su número de columnas, así que el valor que se escribe siempre es el correcto. Al aplicar un parche de 2 columnas, la aplicación avisa de que no contiene la columna de valores viejos.
+**Backward compatibility:** an old 2-column patch (`0xADDR 0xNEW`) still applies without issues. Each line is interpreted by its number of columns, so the value that gets written is always the correct one. When applying a 2-column patch, the app warns that it does not contain the old-values column.
 
 ---
 
-## Uso
+## Usage
 
-### 1. Cargar ficheros A y B
+### 1. Load files A and B
 
-Arrastra y suelta los ficheros sobre las zonas **A** (original) y **B** (modificado o un `diff.txt`), o haz clic en cada zona para elegirlos. También desde el menú de funciones.
+Drag and drop the files onto the **A** (original) and **B** (modified or a `diff.txt`) zones, or click each zone to pick them. You can also use the functions menu.
 
-![Cargar ficheros](2.png)
+![Load files](2.png)
 
-### 2. Guardar diff A-B
+### 2. Save diff A-B
 
-Compara A y B y guarda las diferencias en un fichero `<B>_<timestamp>_diff.txt` en formato de 3 columnas. Muestra el nombre, tamaño y fecha de cada fichero, y el número de diferencias encontradas.
+Compares A and B and saves the differences to a file `<B>_<timestamp>_diff.txt` in 3-column format. It shows the name, size and date of each file, and the number of differences found.
 
-![Guardar diff](3.png)
+![Save diff](3.png)
 
-### 3. Aplicar patch
+### 3. Apply patch
 
-Carga el original en **A** y un `diff.txt` en **B**, y genera un fichero parcheado `<A>_<...>_patched.<ext>`. Si el parche trae la columna de valores viejos, se verifica que coincidan con A y se avisa si el fichero base no es el correcto.
+Load the original in **A** and a `diff.txt` in **B**, and it generates a patched file `<A>_<...>_patched.<ext>`. If the patch carries the old-values column, it is verified against A and warns you if the base file is not the correct one.
 
-![Aplicar patch](4.png)
+![Apply patch](4.png)
 
-### 4. Comparador hexadecimal (HexComp)
+### 4. Hex comparator (HexComp)
 
-Abre una **ventana independiente** con el volcado hexadecimal de A y B lado a lado:
+Opens a **separate window** with the hex dump of A and B side by side:
 
-- **Offsets en azul**, **bytes cambiados en rojo**.
-- Modo **"solo diferencias"** (con líneas de contexto configurables) o **todo el binario**.
-- Columna ASCII a la derecha de cada panel.
+- **Offsets in blue**, **changed bytes in red**.
+- **"Only differences"** mode (with configurable context lines) or **whole binary**.
+- ASCII column to the right of each panel.
 
-![Comparador hex](5.png)
+![Hex comparator](5.png)
 
-### 5. Editar bytes
+### 5. Edit bytes
 
-Dentro del comparador puedes **editar bytes** tanto en A como en B:
+Inside the comparator you can **edit bytes** in both A and B:
 
-- **Clic** en un byte para seleccionarlo (fondo amarillo) y escribe **2 dígitos hex** para cambiarlo; avanza automáticamente al siguiente.
-- **Flechas ←/→** para moverte, **Esc** para deseleccionar.
-- Los bytes editados se marcan en **naranja**.
-- El icono de **disquete** guarda A y/o B editados como un `.bin` nuevo (no sobrescribe el original).
-- El icono de **exportar** guarda el diff (patch) del estado actual, **incluyendo tus ediciones**.
+- **Click** a byte to select it (yellow background) and type **2 hex digits** to change it; it automatically advances to the next one.
+- **←/→ arrows** to move, **Esc** to deselect.
+- Edited bytes are marked in **orange**.
+- The **floppy disk** icon saves the edited A and/or B as a new `.bin` (it does not overwrite the original).
+- The **export** icon saves the diff (patch) of the current state, **including your edits**.
 
-![Editar bytes](6.png)
+![Edit bytes](6.png)
 
-### 6. Buscar y navegar
+### 6. Search and navigate
 
-- **Goto**: escribe un offset en hexadecimal y salta a él, centrado en la vista.
-- **Find**: busca una secuencia en **Hex** (`C2 FC 01`) o en **ASCII** (texto), con resaltado en **verde** y botones de coincidencia siguiente/anterior.
-- **Flechas de diferencia**: recorren las diferencias una a una, centrando cada una en pantalla.
+- **Goto**: type a hexadecimal offset and jump to it, centered in the view.
+- **Find**: search for a sequence in **Hex** (`C2 FC 01`) or **ASCII** (text), with an **A / B** panel selector, green highlighting and next/previous match buttons.
+- **Difference arrows**: step through the differences one by one, centering each one on screen.
 
-![Buscar y navegar](7.png)
-
----
-
-## Actualizaciones
-
-DiffPatchTool comprueba automáticamente si hay una versión nueva en GitHub **al arrancar** y también mediante el botón de **comprobar actualizaciones** de la barra superior. Si hay una release más reciente, aparece un botón para **descargar e instalar** la actualización, que reemplaza el ejecutable. Tras actualizar, cierra y vuelve a abrir la aplicación.
+![Search and navigate](7.png)
 
 ---
 
-## Compilación
+## Updates
 
-Requiere [Rust](https://rustup.rs) instalado.
+DiffPatchTool automatically checks for a new version on GitHub **at startup** and also via the **check for updates** button in the top bar. If a newer release is available, a button appears to **download and install** the update, which replaces the executable. After updating, close and reopen the application.
+
+---
+
+## Building
+
+Requires [Rust](https://rustup.rs) installed.
 
 ```bash
-cargo run            # compilar y ejecutar (desarrollo)
+cargo run            # build and run (development)
 cargo build --release
 ```
 
-El ejecutable final queda en `target/release/DiffPatchTool.exe`.
+The final executable is placed at `target/release/DiffPatchTool.exe`.
 
-En Linux se necesitan las librerías de desarrollo de GUI la primera vez:
+On Linux the GUI development libraries are needed the first time:
 
 ```bash
 sudo apt install libxcb1-dev libxkbcommon-dev libwayland-dev \
                  libgtk-3-dev libglib2.0-dev pkg-config
 ```
 
-### Icono de la aplicación
+### Application icon
 
-Coloca un `icon.ico` (multi-resolución: 16, 32, 48, 256) en `assets/icon.ico`. Con eso:
+Place an `icon.ico` (multi-resolution: 16, 32, 48, 256) in `assets/icon.ico`. With that:
 
-- El **icono de la ventana** va embebido en el binario.
-- El **icono del `.exe`** (Explorador y barra de tareas) lo incrusta `build.rs` al compilar en Windows.
-
----
-
-## Iconos y personalización
-
-La interfaz usa los iconos [Phosphor](https://phosphoricons.com/) (embebidos en el binario mediante `egui-phosphor`), por lo que se ven igual en cualquier sistema. Los colores del tema, los del visor hex y los tamaños se ajustan en el código (`setup_style`, `hex_row_layout`).
+- The **window icon** is embedded in the binary.
+- The **`.exe` icon** (Explorer and taskbar) is embedded by `build.rs` when building on Windows.
 
 ---
 
-## ☕ Apoya mi trabajo
+## Icons and customization
 
-Si encuentras útil este proyecto y te gustaría apoyar su desarrollo, considera hacerme una donación. ¡Cualquier cantidad es bienvenida y muy apreciada!
+The interface uses [Phosphor](https://phosphoricons.com/) icons (embedded in the binary via `egui-phosphor`), so they look the same on any system. The theme colors, the hex viewer colors and sizes are adjusted in the code (`setup_style`, `hex_row_layout`).
+
+---
+
+## ☕ Support my work
+
+If you find this project useful and would like to support its development, please consider making a donation. Any amount is welcome and greatly appreciated!
 
 **Bitcoin (BTC):**
 
@@ -172,20 +176,20 @@ Si encuentras útil este proyecto y te gustaría apoyar su desarrollo, considera
 
 **PayPal:** reproteq@gmail.com
 
-| Monto        | Enlace de Donación                                                        |
-|--------------|---------------------------------------------------------------------------|
-| 1 €          | [Donar 1 €](https://paypal.me/reproteqofficial/1)                    |
-| 5 €          | [Donar 5 €](https://paypal.me/reproteqofficial/5)                    |
-| 10 €         | [Donar 10 €](https://paypal.me/reproteqofficial/10)                  |
-| 25 €         | [Donar 25 €](https://paypal.me/reproteqofficial/25)                  |
-| 50 €         | [Donar 50 €](https://paypal.me/reproteqofficial/50)                  |
-| 100 €        | [Donar 100 €](https://paypal.me/reproteqofficial/100)               |
-| Monto Libre  | [Donar Otro Monto](https://paypal.me/reproteqofficial)              |
+| Amount       | Donation link                                                        |
+|--------------|----------------------------------------------------------------------|
+| €1           | [Donate €1](https://paypal.me/reproteqofficial/1)                    |
+| €5           | [Donate €5](https://paypal.me/reproteqofficial/5)                    |
+| €10          | [Donate €10](https://paypal.me/reproteqofficial/10)                  |
+| €25          | [Donate €25](https://paypal.me/reproteqofficial/25)                  |
+| €50          | [Donate €50](https://paypal.me/reproteqofficial/50)                  |
+| €100         | [Donate €100](https://paypal.me/reproteqofficial/100)                |
+| Custom       | [Donate a custom amount](https://paypal.me/reproteqofficial)         |
 
 ---
 
-## Licencia
+## License
 
-© Reproteq. Todos los derechos reservados.
+© Reproteq. All rights reserved.
 
-[![Descargas Totales](https://img.shields.io/github/downloads/reproteq/DiffPatchTool/total?style=flat-square&color=blue)](https://github.com/reproteq/DiffPatchTool/releases)
+[![Total Downloads](https://img.shields.io/github/downloads/reproteq/DiffPatchTool/total?style=flat-square&color=blue)](https://github.com/reproteq/DiffPatchTool/releases)
