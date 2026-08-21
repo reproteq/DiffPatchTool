@@ -39,6 +39,7 @@ by **Reproteq** · Author: **Alex G.T.**
 - **Patch application** with optional verification of the original value and a warning if the base file doesn't match.
 - **Hex comparator** editor-style: two side-by-side panels A | B, changed bytes in red, offsets in blue.
 - **Byte editing** in both A and B directly on the hex, and saving as a new `.bin`.
+- **Analyzer** Fast Algorithm for Binary Analyzer .
 - **Search** by hex or ASCII, with green highlighting.
 - **Navigation** between differences and jump to an offset (`Goto`).
 - **Progress bar** for operations on large files (work runs in the background, the UI never freezes).
