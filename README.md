@@ -20,6 +20,12 @@ by **Reproteq** · Author: **Alex G.T.**
 
 ![DiffPatchTool](assets/1.png)
 ![DiffPatchTool](assets/web1.png)
+[Haz clic aquí para ver la imagen de ejemplo](assets/2.png)
+[Haz clic aquí para ver la imagen de ejemplo](assets/3.png)
+[Haz clic aquí para ver la imagen de ejemplo](assets/4.png)
+[Haz clic aquí para ver la imagen de ejemplo](assets/5.png)
+[Haz clic aquí para ver la imagen de ejemplo](assets/6.png)
+[Haz clic aquí para ver la imagen de ejemplo](assets/7.png)
 ---
 
 ## Table of Contents
