@@ -18,8 +18,8 @@ Written in **Rust**  using [egui/eframe](https://github.com/emilk/egui), compile
 
 by **Reproteq** · Author: **Alex G.T.**
 
-![DiffPatchTool](1.png)
-
+![DiffPatchTool](assets/1.png)
+![DiffPatchTool](assets/web1.png)
 ---
 
 ## Table of Contents
