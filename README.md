@@ -20,12 +20,12 @@ by **Reproteq** · Author: **Alex G.T.**
 
 ![DiffPatchTool](assets/1.png)
 ![DiffPatchTool](assets/web1.png)
-![img](assets/2.png)
-![img](assets/3.png)
-![img](assets/4.png)
-![img](assets/5.png)
-![img](assets/6.png)
-![img](assets/7.png)
+[img](assets/2.png)
+[img](assets/3.png)
+[img](assets/4.png)
+[img](assets/5.png)
+[img](assets/6.png)
+[img](assets/7.png)
 ---
 
 ## Table of Contents
