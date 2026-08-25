@@ -199,7 +199,7 @@ If a newer release is available, a button allows you to **download and install t
 ## Building
 
 ```
-DiffPatchTool.exe is compiled Ready to use, just download it. :tada:
+DiffPatchTool.exe is compiled Ready to use, just download it. 🎉
 ```
 
 ---
