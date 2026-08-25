@@ -176,8 +176,7 @@ DiffPatchTool can **optionally** connect to the server at [diffpatchtool.com](ht
 
 ## Settings and System
 
-- **Settings** menu: enable / disable the Analyzer, manage the account, and configure preferences stored in `config.json`:
-  `%APPDATA%\Reproteq\DiffPatchTool\`
+- **Settings** configure preferences 
 - **System** menu: displays system information including:
   - Machine identifier (**HWID**)
   - Operating system
@@ -245,9 +244,13 @@ If you find this project useful and would like to support its development, consi
 - Website: [diffpatchtool.com](https://diffpatchtool.com) · [reproteq.com](https://reproteq.com)
 - Email: reproteq@gmail.com
 - Telegram: [@reproteq](https://t.me/reproteq)
+## Special Thanks
+- **Ali-G** ❤️ — For your incredible contribution and support! 🎉
 
 ---
 
 ## License
 
 © Reproteq. All rights reserved.
+
+
