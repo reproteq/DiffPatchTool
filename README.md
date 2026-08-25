@@ -15,7 +15,7 @@
 
 **DiffPatchTool** is a desktop application for **comparing, generating diffs, applying patches, inspecting, and editing binary files** — designed especially for working with ECU firmware (`.bin`), but suitable for any pair of binary files.
 
-Written in **Rust** using [egui/eframe](https://github.com/emilk/egui), it compiles to a **single portable `.exe`** with no external dependencies. It features a modern light theme, embedded icons, a colored hex viewer, optional server connectivity, and automatic updates from GitHub.
+Written in **Rust** , it compiles to a **single portable `.exe`** with no external dependencies. It features a modern light theme, embedded icons, a colored hex viewer, optional server connectivity, and automatic updates from GitHub.
 
 by **Reproteq** · Author: **Alex G.T.**
 
@@ -169,7 +169,7 @@ DiffPatchTool can **optionally** connect to the server at [diffpatchtool.com](ht
 **Logging in is not required to use the application** — all local features remain available without an account or Internet connection.
 
 - **Connection icon** in the toolbar: gray when disconnected and green when connected. Clicking it opens the login dialog or logs out.
-- **Optional login** using a Reproteq account. The session can be remembered between launches using a token, with the option to remember the email and password.
+- **Optional login** using a diffpatchtool.com account. The session can be remembered between launches using a token, with the option to remember the email and password.
 - Connecting enables additional features such as **saving and sharing patches** and **checking whether a patch matches** the currently loaded file.
 
 ---
@@ -198,9 +198,8 @@ If a newer release is available, a button allows you to **download and install t
 
 ## Building
 
-```bash
-cargo run              # Build and run (development)
-cargo build --release  # Build optimized release binary
+```
+DiffPatchTool.exe is compiled Ready to use, just download it. :tada:
 ```
 
 ---
