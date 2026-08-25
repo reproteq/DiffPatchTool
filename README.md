@@ -165,30 +165,10 @@ DiffPatchTool checks for a new version en GitHub **on startup** y using the tool
 
 ## Building
 
-Requires [Rust](https://rustup.rs) installed.
-
 ```bash
 cargo run              # build and run (development)
 cargo build --release  # optimized binary
 ```
-
-The final executable is located at `target/release/DiffPatchTool.exe`.
-
-En Linux se necesitan las librerías de development de GUI la primera vez:
-
-```bash
-sudo apt install libxcb1-dev libxkbcommon-dev libwayland-dev \
-                 libgtk-3-dev libglib2.0-dev pkg-config
-```
-
-### Icons and Logo
-
-- **Window icon**: se rasteriza desde `assets/r.svg`.
-- **`.exe` icon** (Explorador y barra de tareas): `assets/icon.ico` (multi-resolución 16–256), embedded by `build.rs` al compilar en Windows.
-- **Logo** de la interfaz y del README: `assets/logo.svg`.
-
-Los SVG  using texto deben convertirse a trazados (paths) antes, because the rasterizer does not embed fonts.
-
 ---
 
 ## In Development / Future
