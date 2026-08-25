@@ -64,7 +64,7 @@ by **Reproteq** · Author: **Alex G.T.**
 - **Context menu** (clic derecho)  using copiar, pegar, rellenar, definir bloque desde el byte, copiar selección a un fichero nuevo y escribir portapapeles ( using aviso si el fichero crece).
 - **Buscador** por hex o ASCII en A o B,  using resaltado.
 - **Navegación** entre diferencias y jump to an offset (`Goto`).
-- **Analyzer**: extracts ECU identifiers (números de pieza, versiones) del fichero cargado, configurable por `regex.txt`.
+- **Analyzer**: extracts ECU identifiers
 - **Optional server connection** (login) para funciones online — la app funciona igual sin conexión.
 - **Persistent configuration** (`config.json`): recuerda preferencias de vista, selección y opciones.
 - **Progress bar** para operaciones grandes (background processing, la interfaz no se congela).
@@ -136,7 +136,7 @@ Opens a **separate window**  using el hexadecimal dump de A y B lado a lado:
 
 ### 7. Analyzer (ECU Identifiers)
 
-When a file is loaded, el **analyzer** automatically extracts identificadores relevantes (Bosch part numbers, EDC17 / MED17 / MD1 versions, etc.) definidos en `regex.txt`. Useful for quickly identifying which ECU each file belongs to. It can be enabled / disabled en **Settings**.
+When a file is loaded, el **analyzer** automatically extracts identificadores relevantes (Bosch part numbers, EDC17 / MED17 / MD1 versions, etc.) / disabled en **Settings**.
 
 ---
 
