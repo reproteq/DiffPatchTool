@@ -23,13 +23,16 @@ by **Reproteq** · Author: **Alex G.T.**
 ![DiffPatchTool](assets/web1.png)
 
 ## Images Gallery
-
+![DiffPatchTool](assets/1.png)
 ![DiffPatchTool](assets/2.png)
 ![DiffPatchTool](assets/3.png)
 ![DiffPatchTool](assets/4.png)
 ![DiffPatchTool](assets/5.png)
 ![DiffPatchTool](assets/6.png)
 ![DiffPatchTool](assets/7.png)
+![DiffPatchTool](assets/8.png)
+![DiffPatchTool](assets/9.png)
+![DiffPatchTool](assets/10.png)
 
 ---
 
