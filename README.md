@@ -79,7 +79,7 @@ Written in **Rust**, it compiles to a **single portable `.exe`** with no externa
 ## How work
 
 <p align="center">
-  <img src="images/diff-patch-squematic.svg" alt="DiffPatchTool diff & patch schematic" width="720">
+  <img src="assets/diff-patch-squematic.svg" alt="DiffPatchTool diff & patch schematic" width="720">
 </p>
 
 - **Byte-by-byte comparison** of two files using a list of differences.
