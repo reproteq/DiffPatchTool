@@ -76,6 +76,14 @@ Written in **Rust**, it compiles to a **single portable `.exe`** with no externa
 - **Progress bar** for large operations using background processing, keeping the interface responsive.
 - **Automatic updates** from GitHub Releases, including automatic restart after installation.
 
+## How work
+
+<p align="center">
+  <img src="images/diff-patch-squematic.svg" alt="DiffPatchTool diff & patch schematic" width="720">
+</p>
+
+- **Byte-by-byte comparison** of two files using a list of differences.
+
 ---
 
 ## Diff Format (3 Columns)
